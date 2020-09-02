@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
@@ -22,7 +21,9 @@ function Home() {
         files are plain text file containing citation information for software.
       </p>
       <Button variant="secondary">Learn More</Button>
-      <Button variant="primary">Get Started</Button>
+      <Button variant="primary" href="/wizard?#repo">
+        Get Started
+      </Button>
       <Button variant="success">
         <a
           href="https://forms.gle/RCbpupGAnUDRrRM4A"

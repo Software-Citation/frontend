@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import FAQ from './components/FAQ/FAQ';
+import Wizard from './components/Wizard/Wizard';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={About} />
         <Route path="/faq" exact component={FAQ} />
+        <Route path="/wizard" exact component={Wizard} />
       </Switch>
     </Layout>
   );

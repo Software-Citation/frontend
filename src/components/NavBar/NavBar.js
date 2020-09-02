@@ -1,8 +1,6 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 
-import styles from './NavBar.module.scss';
-
 function NavBar() {
   return (
     <Nav className="justify-content-end" defaultActiveKey="home">
