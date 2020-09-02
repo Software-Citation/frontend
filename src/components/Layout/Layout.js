@@ -8,7 +8,9 @@ function Layout(props) {
   return (
     <div className={styles.container}>
       <NavBar />
-      <main className={styles.content}>{props.children}</main>
+      <main className="container d-flex flex-column align-items-center">
+        {props.children}
+      </main>
     </div>
   );
 }

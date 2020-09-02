@@ -1,0 +1,11 @@
+.cffImg {
+  margin: 20px 0;
+  box-shadow: 0 0 10px 0px #2a2a2a40;
+  width: 100%;
+}
+
+@media (min-width: 700px) {
+  .cffImg {
+    width: 500px;
+  }
+}
