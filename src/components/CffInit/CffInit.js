@@ -5,15 +5,17 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import CffForm from './CffForm/CffForm';
 import CompiledCff from './CompliedCff/CompiledCff';
 
+import styles from './CffInit.module.scss';
+
 class CffInit extends React.PureComponent {
   render() {
     return (
       <Container>
-        <Row>
-          <Col>
+        <Row className={styles.cffContainer}>
+          <Col className={styles.cffFormContainer}>
             <CffForm />
           </Col>
-          <Col>
+          <Col className={styles.compiledCffContainer}>
             <CompiledCff />
           </Col>
         </Row>

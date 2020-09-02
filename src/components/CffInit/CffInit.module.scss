@@ -1,8 +1,13 @@
-.container {
-  display: flex;
-  flex-direction: column;
+.cffContainer {
 }
 
-.cffContainer {
-  display: flex;
+.cffFormContainer {
+}
+
+.compiledCffContainer {
+  font-family: 'Courier New';
+  background-color: #efefef;
+  border-radius: 5px;
+  padding: 10px 20px;
+  overflow: auto;
 }
