@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import FAQ from './components/FAQ/FAQ';
 import CffInit from './components/CffInit/CffInit';
+import Wizard from './components/Wizard/Wizard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" exact component={About} />
         <Route path="/faq" exact component={FAQ} />
         <Route path="/cff-init" exact component={CffInit} />
+        <Route path="/wizard" exact component={Wizard} />
       </Switch>
     </Layout>
   );
