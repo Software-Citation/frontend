@@ -1,15 +1,21 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import classNames from 'classnames/bind';
+import styles from './About.module.css';
+
+const cx = classNames.bind(styles);
+const imageClass = cx('cffImg');
 
 function About() {
   return (
     <>
       <h1>About</h1>
-      <span id="subtitle">
+      <span className="lead">
         “Enabling research software engineers to add citability in open source
         software without hassle”
       </span>
-
-      <div id="content">
+      <Container>
         <p>
           The Software Citation Project started when a group of research
           software engineers realised that a <i>"chicken and egg"</i> (discussed
@@ -78,11 +84,13 @@ function About() {
           </a>
           . A <code>CITATION.cff</code> looks like:
         </p>
-        <img
-          src="https://i.imgur.com/IrrEh0w.png"
-          alt="CITATION.cff file"
-          class="cff-img"
-        />
+        <Row className="justify-content-center">
+          <img
+            src="https://i.imgur.com/IrrEh0w.png"
+            alt="CITATION.cff file"
+            className={imageClass}
+          />
+        </Row>
         <p>
           <strong>The "chicken and egg" problem:</strong> The existing workflow
           does not allow you to incorporate a DOI (using tools like{' '}
@@ -120,12 +128,14 @@ function About() {
             Zenodo!
           </i>
         </p>
-        <img
-          src="https://i.imgur.com/V8QQNnI.png"
-          alt="Citation Workflow"
-          class="cff-img"
-        />
-      </div>
+        <Row className="justify-content-center">
+          <img
+            src="https://i.imgur.com/V8QQNnI.png"
+            alt="Citation Workflow"
+            className={imageClass}
+          />
+        </Row>
+      </Container>
     </>
   );
 }
