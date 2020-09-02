@@ -5,7 +5,7 @@ import styles from './NavBar.module.scss';
 
 function NavBar() {
   return (
-    <Nav className="justify-content-right" defaultActiveKey="home">
+    <Nav className="justify-content-end" defaultActiveKey="home">
       <Nav.Link eventKey="home" href="/">
         Home
       </Nav.Link>
