@@ -10,7 +10,7 @@ import styles from './CffInit.module.scss';
 class CffInit extends React.PureComponent {
   render() {
     return (
-      <Container>
+      <Container className={styles.container}>
         <Row className={styles.cffContainer}>
           <Col className={styles.cffFormContainer}>
             <CffForm />
@@ -20,7 +20,7 @@ class CffInit extends React.PureComponent {
           </Col>
         </Row>
         <Row className="justify-content-md-center">
-          <Button variant="primary">Generate CFF</Button>
+          <Button variant="primary">Download CFF</Button>
         </Row>
       </Container>
     );

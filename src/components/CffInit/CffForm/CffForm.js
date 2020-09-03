@@ -12,7 +12,7 @@ class CffForm extends React.Component {
     };
   }
 
-  inputUpdateHanlder = (event, fieldName) => {
+  inputUpdateHandler = (event, fieldName) => {
     const cffObj = { ...this.state.cffObj };
     cffObj[fieldName] = event.target.value;
     this.setState({ cffObj });
@@ -26,24 +26,32 @@ class CffForm extends React.Component {
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Title"
-            onChange={(e) => this.inputUpdateHanlder(e, 'title')}
+            placeholder="Software Citation"
+            onChange={(e) => this.inputUpdateHandler(e, 'title')}
+          />
+        </Form.Group>
+        <Form.Group controlId="formMessage">
+          <Form.Label>Message</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows="3"
+            placeholder="Please cite the following works when using this software."
+            onChange={(e) => this.inputUpdateHandler(e, 'message')}
           />
         </Form.Group>
         <Form.Group controlId="formVersion">
           <Form.Label>Version</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Version"
-            onChange={(e) => this.inputUpdateHanlder(e, 'version')}
+            placeholder="1.2.0"
+            onChange={(e) => this.inputUpdateHandler(e, 'version')}
           />
         </Form.Group>
         <Form.Group controlId="formDate">
           <Form.Label>Date Released</Form.Label>
           <Form.Control
             type="date"
-            placeholder="Date"
-            onChange={(e) => this.inputUpdateHanlder(e, 'date')}
+            onChange={(e) => this.inputUpdateHandler(e, 'releaseDate')}
           />
         </Form.Group>
         <Form.Group controlId="formAuthors">
@@ -51,23 +59,23 @@ class CffForm extends React.Component {
           <Form.Control
             type="text"
             placeholder="Authors"
-            onChange={(e) => this.inputUpdateHanlder(e, 'authors')}
+            onChange={(e) => this.inputUpdateHandler(e, 'authors')}
           />
         </Form.Group>
         <Form.Group controlId="formDoi">
           <Form.Label>DOI</Form.Label>
           <Form.Control
             type="text"
-            placeholder="URL"
-            onChange={(e) => this.inputUpdateHanlder(e, 'doi')}
+            placeholder="DOI only, eg: 10.12688/f1000research"
+            onChange={(e) => this.inputUpdateHandler(e, 'doi')}
           />
         </Form.Group>
         <Form.Group controlId="formWebsite">
-          <Form.Label>Website</Form.Label>
+          <Form.Label>Website URL</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Landing page URL"
-            onChange={(e) => this.inputUpdateHanlder(e, 'websiteUrl')}
+            placeholder="https://biojs.net"
+            onChange={(e) => this.inputUpdateHandler(e, 'websiteUrl')}
           />
         </Form.Group>
         <Form.Group controlId="formUrl">
@@ -75,7 +83,7 @@ class CffForm extends React.Component {
           <Form.Control
             type="text"
             placeholder="Source code URL"
-            onChange={(e) => this.inputUpdateHanlder(e, 'repoUrl')}
+            onChange={(e) => this.inputUpdateHandler(e, 'repoUrl')}
           />
         </Form.Group>
         <Form.Group controlId="formAbstract">
@@ -84,7 +92,7 @@ class CffForm extends React.Component {
             as="textarea"
             rows="3"
             placeholder="Abstract"
-            onChange={(e) => this.inputUpdateHanlder(e, 'abstract')}
+            onChange={(e) => this.inputUpdateHandler(e, 'abstract')}
           />
         </Form.Group>
         <Form.Group controlId="formKeywords">
@@ -92,7 +100,7 @@ class CffForm extends React.Component {
           <Form.Control
             type="text"
             placeholder="open source, open science"
-            onChange={(e) => this.inputUpdateHanlder(e, 'keywords')}
+            onChange={(e) => this.inputUpdateHandler(e, 'keywords')}
           />
           <Form.Text className="text-muted">
             Comma separated keywords.
@@ -103,7 +111,7 @@ class CffForm extends React.Component {
           <Form.Control
             type="text"
             placeholder="Apache-2.0"
-            onChange={(e) => this.inputUpdateHanlder(e, 'licenseType')}
+            onChange={(e) => this.inputUpdateHandler(e, 'license')}
           />
           <Form.Text className="text-muted">
             Use one of the authorized license abbreviations. See the{' '}
@@ -112,6 +120,24 @@ class CffForm extends React.Component {
               target="_blank"
             >
               complete list here
+            </a>
+            .
+          </Form.Text>
+        </Form.Group>
+        <Form.Group controlId="formLicense">
+          <Form.Label>License URL</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="URL to non-standard license"
+            onChange={(e) => this.inputUpdateHandler(e, 'licenseUrl')}
+          />
+          <Form.Text className="text-muted">
+            Only for non-standard licenses not included in the{' '}
+            <a
+              href="https://github.com/spdx/license-list-data/blob/6b77c7a2840009663ee0b083523fc0ad25376b57/json/licenses.json"
+              target="_blank"
+            >
+              list
             </a>
             .
           </Form.Text>

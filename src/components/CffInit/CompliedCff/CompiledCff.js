@@ -35,12 +35,16 @@ class CompiledCff extends React.Component {
   };
 
   indent = (s) => {
-    return s.replace(/[\n]/g, '\n    ');
+    return s.replace(/[\n]/g, '\n\xa0\xa0\xa0\xa0');
   };
 
   is_multiline = (s) => {
     let re = new RegExp('[\\n|\\r]');
     return re.test(s);
+  };
+
+  isNonEmptyString = (s) => {
+    return s && s.trim();
   };
 
   compute_cff = (cffObj) => {
@@ -50,16 +54,82 @@ class CompiledCff extends React.Component {
 
     lines.push('cff-version: ' + this.add_quotes('1.1.0'));
 
-    if (cffObj.title !== undefined) {
+    if (this.isNonEmptyString(cffObj.title)) {
       lines.push('title: ' + this.add_quotes(cffObj.title));
     } else {
       lines.push('title: ');
     }
 
-    if (cffObj.version !== undefined) {
+    if (this.isNonEmptyString(cffObj.message)) {
+      if (this.is_multiline(cffObj.message)) {
+        lines.push(
+          'message: |\n\xa0\xa0\xa0\xa0' +
+            this.indent(this.add_quotes(cffObj.message))
+        );
+      } else {
+        lines.push('message: ' + this.add_quotes(cffObj.message));
+      }
+    } else {
+      lines.push('message: ');
+    }
+
+    if (this.isNonEmptyString(cffObj.version)) {
       lines.push('version: ' + this.add_quotes(cffObj.version));
     } else {
       lines.push('version: ');
+    }
+
+    if (this.isNonEmptyString(cffObj.releaseDate)) {
+      lines.push(
+        'date-released: ' +
+          this.add_quotes(
+            new Date(cffObj.releaseDate).toISOString().substring(0, 10)
+          )
+      );
+    } else {
+      lines.push('date-released: ');
+    }
+
+    if (this.isNonEmptyString(cffObj.doi)) {
+      lines.push('doi: ' + this.add_quotes(cffObj.doi));
+    }
+
+    if (this.isNonEmptyString(cffObj.abstract)) {
+      if (this.is_multiline(cffObj.abstract)) {
+        lines.push(
+          'abstract: |\n\xa0\xa0\xa0\xa0' +
+            this.indent(this.add_quotes(cffObj.abstract))
+        );
+      } else {
+        lines.push('abstract: ' + this.add_quotes(cffObj.abstract));
+      }
+    }
+
+    if (this.isNonEmptyString(cffObj.websiteUrl)) {
+      lines.push(`url: ${this.add_quotes(cffObj.websiteUrl)}`);
+    }
+
+    if (this.isNonEmptyString(cffObj.repoUrl)) {
+      lines.push(`repository: ${this.add_quotes(cffObj.repoUrl)}`);
+    }
+
+    if (this.isNonEmptyString(cffObj.license)) {
+      lines.push(`license: ${this.add_quotes(cffObj.license)}`);
+    }
+
+    if (this.isNonEmptyString(cffObj.licenseUrl)) {
+      lines.push(`license-url: ${this.add_quotes(cffObj.licenseUrl)}`);
+    }
+
+    if (this.isNonEmptyString(cffObj.keywords)) {
+      const keywords = cffObj.keywords.split(',');
+      lines.push('keywords: ');
+      for (let keyword of keywords) {
+        keyword = keyword.trim();
+        if (keyword) {
+          lines.push('\xa0\xa0-\xa0' + this.add_quotes(keyword));
+        }
+      }
     }
 
     lines.push('...');
@@ -71,7 +141,9 @@ class CompiledCff extends React.Component {
     return (
       <div>
         {this.state.compiledCff.map((line) => (
-          <div>{line}</div>
+          <div key={line} style={{ whiteSpace: 'pre-line' }}>
+            {line}
+          </div>
         ))}
       </div>
     );
